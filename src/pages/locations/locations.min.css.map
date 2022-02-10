@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "locations.scss"
+    ],
+    "names": [],
+    "file": "locations.min.css"
+}
