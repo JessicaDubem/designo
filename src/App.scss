@@ -1,10 +1,12 @@
 // this file, is used to style the navigation, footer, body, *, and all global styles
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap');
+@import './styles.scss';
 *{
-    font-family: 'Rubik', sans-serif;
+    font-family:'Jost', sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 26px;
+    // overflow-x: hidden;
 }
 body {
     min-height: 100vh;
@@ -22,4 +24,158 @@ h2{
     font-size:40px;
     line-height:48px ;
     word-spacing: 2;
+}
+
+h3{
+    font-weight: 200;
+    font-size: 20px;
+    line-height: 26px;
+    word-spacing: 5;
+}
+
+footer{
+    background-color:$darkGrey;
+    padding-top:250px;
+    img{
+        width:50%;
+    }
+
+    .footer-info{
+        color:rgb(163, 162, 162);
+        
+    }
+    .footer-blocks{
+        display:flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+
+        .footer-block-one, 
+        .footer-block-two, 
+        .footer-block-three{
+        margin-bottom: 20px;
+        }
+    }
+}
+ul{
+   li .nav-item{
+       font-weight: 300;
+   }
+    li:hover{
+        text-decoration: underline;
+        }
+
+    li:active{
+            text-decoration: underline;
+            }
+}
+
+
+// Medium devices (tablets, 805px and up)
+@media (min-width: 805px) {
+    .footer-header{
+        border-bottom: 0.3px solid gray;
+    } 
+
+    footer{
+        img{
+            width:50%;
+        }
+    }
+ }
+// Small devices (landscape phones, less than 805px)
+@media (max-width: 804.98px) {
+    .footer-brand{
+        border-bottom:0.5px solid gray;
+    }
+    .heading-nav{
+        .navbarNav{
+            background-color: $darkGrey;
+            width:100%;
+            font-size:50px;
+        }
+    }
+
+    .slideInDown {
+        -webkit-animation-name: slideInDown;
+        animation-name: slideInDown;
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        }
+        @-webkit-keyframes slideInDown {
+        0% {
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%);
+        visibility: visible;
+        }
+        100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        }
+        }
+        @keyframes slideInDown {
+        0% {
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%);
+        visibility: visible;
+        }
+        100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        }
+        } 
+ }
+// sizing footer image
+ .footer-brand-icon{
+    width:80%;
+}
+
+
+@media (min-width: 425px) { 
+    .footer-brand-icon{
+        width:60%;
+    }
+ }
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) { 
+    .footer-brand-icon{
+        width:35%;
+    }
+ }
+
+ // Small devices (landscape phones, less than 805px)
+@media (max-width: 804.98px) {
+    .mobile-menu{
+        background-color: $darkGrey;
+        
+    }
+    .home-icon{
+        width:55%;
+        img{
+            width:10%;
+        }
+    }
+}
+@media (min-width: 805px) {
+    body{
+        background-image:url('./assets/global/bg-pattern-leaf.svg');
+        background-position:0% 50%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+  footer{
+    .footer-blocks{
+        justify-content: space-between;
+        flex-direction: row;
+        text-align:left;
+        
+        .footer-block-one, .footer-block-two, .footer-block-three{
+            align-self: end;
+            margin-bottom: 0px;
+        }
+    }
+  }
 }

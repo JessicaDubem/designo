@@ -1,0 +1,22 @@
+//////////////////////////////////////////// ///MEDIA QUERIES/////////////////////////////////////////////////////////
+.heading{
+    background-image:url('../../../assets/homepage/thirdSection/small-circle.svg') ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:45%;
+}
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px){ 
+    .heading{
+        background-image:url('../../../assets/designs/app/bg-pattern-intro-app.svg') ;
+        background-position: right;
+        // background-repeat: no-repeat;
+        background-size:cover ;
+    }
+ }
+//  @media (min-width: 805px) {
+//      .heading{
+//          margin-left:10%;
+//          margin-right:10%;
+//      }
+//  }

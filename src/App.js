@@ -1,9 +1,14 @@
 // import from react, libraries
+import { useState, useEffect} from 'react';
 import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 
 // import files
 import './App.scss';
 import './styles.scss';
+import menuIcon from './assets/global/icon-hamburger.svg';
+import closeIcon from './assets/global/icon-close.svg';
+import designo from './assets/global/designo.png';
+import designoLight from './assets/global/designo-light.png'
 import Home from './pages/home/Home';
 import About from './pages/about/About';
 import Locations from './pages/locations/Locations';
@@ -11,54 +16,137 @@ import Contact from './pages/contact/Contact';
 import AppDesign from './pages/appDesign/AppDesign';
 import WebDesign from './pages/webDesign/WebDesign';
 import GraphicDesign from './pages/graphicDesign/GraphicDesign';
-import Card from './components/card/Card'
-
-
+// import Card from './components/card/Card'
 
 
 
 function App() {
+
+  const useMatchMedia = (mediaQuery, initialValue) => {
+    const [isMatching, setIsMatching] = useState(initialValue)
+    useEffect(() => {
+      const watcher = window.matchMedia(mediaQuery)
+      setIsMatching(watcher.matches)
+      const listener = (matches) => {
+        setIsMatching(matches.matches)
+      }
+      if (watcher.addEventListener) {
+        watcher.addEventListener('change', listener)
+      } else {
+        watcher.addListener(listener)
+      }
+      return () => {
+        if (watcher.removeEventListener) {
+          return watcher.removeEventListener('change', listener)
+        } else {
+          return watcher.removeListener(listener)
+        }
+      }
+    }, [mediaQuery])
+  
+    return isMatching
+  }
+  
+  const isDesktopResolution = useMatchMedia('(min-width:805px)', true)
+  
+  
+// /////////////////////////////states/////////////////////////////////////////
+const [menu, setMenu] = useState(true);
+
   return (
     <div className="App">
       <BrowserRouter>
-    {/* <nav className="navbar sticky-top navbar-expand-md navbar-light p-md-3">
-      <div className="container bg-white text-black">
-      <NavLink to = '/' className="navbar-brand">
-        DESIGNO
-      </NavLink>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <div className="mx-auto"></div>
-          <ul className="navbar-nav">
-          <NavLink to = '/about' className="nav-link ">
-                OUR COMPANY
-              </NavLink>
-            <li className="nav-item">
-              <NavLink to = '/locations' className="nav-link text-black">
-                LOCATIONS
-              </NavLink>
-            </li>
-            <li className="nav-item">
-            <NavLink to = '/contact' className="nav-link text-black">
-                CONTACT
-              </NavLink>
-            </li>
-        
-          </ul>
-        </div>
-      </div>
-    </nav>
+
+  {isDesktopResolution && (
+   <nav className=' d-flex 
+   justify-content-between 
+   flex-row 
+   flex-nowrap 
+   align-items-center 
+   my-5 
+   mx-5
+   '>
+    <NavLink to = '/'>
+   <div className='w-50'>
+   <img src={designo} alt='go to home page' className='w-100'/>
+   </div>
+    </NavLink>
+       <ul className='list-unstyled 
+       d-flex 
+       justify-content-between 
+       justify-content-lg-end 
+       flex-row 
+       flex-nowrap
+       w-50'>
+       <li className='text-black'>
+         <NavLink to='/about' className='text-decoration-none link-dark mx-3'>
+           OUR COMPANY
+         </NavLink>
+       </li>
+       <li>
+         <NavLink to='/locations'  className='text-decoration-none link-dark mx-3'>
+           LOCATIONS
+         </NavLink>
+       </li>
+       <li>
+         <NavLink to='/contact'  className='text-decoration-none link-dark'>
+          CONTACT
+         </NavLink>
+       </li>
+     </ul>
+   </nav>
+   )
+   }
+ 
+   {!isDesktopResolution && (
+     <div>
+   <nav className=' d-flex 
+   justify-content-between 
+   flex-row 
+   flex-nowrap 
+   align-items-center 
+   mx-sm-5 
+   mx-3 
+   mx-lg-0
+   my-5
+   '>
+    <NavLink to = '/'>
+   <div className='home-icon'>
+   <img src={designo} alt='go to home page' className='w-100'/>
+   </div>
+    </NavLink>
+       
+    <div>
+         {menu && <img src={menuIcon} className='menu-icon' alt='click on menu' onClick={() => {setMenu(false);}}/>}
+       {!menu && <img src = {closeIcon} alt='close menu' className='close-icon'  onClick={() => {setMenu(true)}}/>}
+       </div>
+   </nav>
+
+   {
+     !menu && (
+      <ul className='list-unstyled d-flex ps-4 flex-column w-100 mobile-menu py-4 slideInDown'>
+      <li className='mx-3 mb-3'>
+        <NavLink to='/about' className='text-decoration-none link-light'>
+          OUR COMPANY
+        </NavLink>
+      </li>
+      <li className='mx-3  mb-3'>
+        <NavLink to='/locations'  className='text-decoration-none link-light'>
+          LOCATIONS
+        </NavLink>
+      </li>
+      <li className='mx-3'>
+        <NavLink to='/contact'  className='text-decoration-none link-light'>
+         CONTACT
+        </NavLink>
+      </li>
+    </ul>
+
+     )
+   }
+   </div>
+   )
+   }
 
       <Routes>
         <Route path='/' element={<Home/>}></Route>
@@ -68,49 +156,103 @@ function App() {
         <Route path='/app-design' element={<AppDesign/>}></Route>
         <Route path='/web-design' element={<WebDesign/>}></Route>
         <Route path='/graphic-design' element={<GraphicDesign/>}></Route>
-      </Routes> */}
-
-<Card/>
+      </Routes>
 
 
-{/* 
-      <footer  className='fixed-bottom'>
-        <div className='container-md'>
+      <footer  className='bottom-0 
+      w-100 
+      pb-3
+      position-relative
+      '>
+      
+      <div className='
+      align-items-end 
+      text-white 
+      mx-5'>
+        {isDesktopResolution && (
+   <nav className=' 
+   d-flex 
+   justify-content-between 
+   flex-row 
+   flex-nowrap 
+   align-items-center 
+   mb-5
+   footer-header'>
+    <NavLink to = '/'>
+   <div className='w-50'>
+   <img src={designoLight} alt='go to home page' className='w-100 '/>
+   </div>
+    </NavLink>
+       <ul className='list-unstyled 
+       d-flex 
+       justify-content-between 
+       justify-content-lg-end 
+       flex-row 
+       flex-nowrap 
+       w-50
+      '>
+       <li className='text-black'>
+         <NavLink to='/about' className='text-decoration-none link-light mx-3'>
+           OUR COMPANY
+         </NavLink>
+       </li>
+       <li>
+         <NavLink to='/locations'  className='text-decoration-none link-light mx-3'>
+           LOCATIONS
+         </NavLink>
+       </li>
+       <li>
+         <NavLink to='/contact'  className='text-decoration-none link-light'>
+          CONTACT
+         </NavLink>
+       </li>
+     </ul>
+   </nav>
+   )
+   }
 
+{!isDesktopResolution && (
+   <nav className=' d-flex justify-content-center flex-column text-center'>
+    <NavLink to = '/'>
+   <div className=' m-auto 
+  m-md-0
+  w-100 
+  footer-brand 
+  pb-4'>
+   <img src={designoLight} alt='go to home page' className='footer-brand-icon'/>
+   </div>
+    </NavLink>
+       
+    <ul className='list-unstyled d-flex ps-4 flex-column w-100 py-4'>
+      <li className='mx-3 mb-3'>
+        <NavLink to='/about' className='text-decoration-none link-light'>
+          OUR COMPANY
+        </NavLink>
+      </li>
+      <li className='mx-3  mb-3'>
+        <NavLink to='/locations'  className='text-decoration-none link-light'>
+          LOCATIONS
+        </NavLink>
+      </li>
+      <li className='mx-3'>
+        <NavLink to='/contact'  className='text-decoration-none link-light'>
+         CONTACT
+        </NavLink>
+      </li>
+    </ul>
 
-        <nav className="navbar  navbar-expand-md navbar-light p-md-3">
-      <div className="container bg-white text-black">
-      <NavLink to = '/' className="navbar-brand">
-        DESIGNO
-      </NavLink>
-        
-        <div className="" id="navbarNav">
-          <div className="mx-auto"></div>
-          <ul className="navbar-nav">
-          <NavLink to = '/about' className="nav-link ">
-                OUR COMPANY
-              </NavLink>
-            <li className="nav-item">
-              <NavLink to = '/locations' className="nav-link text-black">
-                LOCATIONS
-              </NavLink>
-            </li>
-            <li className="nav-item">
-            <NavLink to = '/contact' className="nav-link text-black">
-                CONTACT
-              </NavLink>
-            </li>
-        
-          </ul>
-        </div>
-      </div>
-    </nav>
+   </nav>
+   )
+   }
+ 
+       
+          <div className='
+          footer-blocks
+          mb-3'>
 
-
-          <div className=''>
-
-
-            <div>
+            <div className=' 
+            footer-block-one
+            '>
               <p>
                 Designo Central Office
               </p>
@@ -123,7 +265,9 @@ function App() {
             </div>
 
 
-            <div>
+            <div className=' 
+            footer-block-two
+            '>
               <p>
                 Contact Us (Central Office)
               </p>
@@ -135,54 +279,45 @@ function App() {
               </p>
             </div>
 
-            <p>
+            <p className='
+            footer-block-three'>
            <span>
-             <a href='https://www.facebook.com'>
-             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
-  <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
-</svg>
+             <a href='https://www.facebook.com' className='mx-2'>
+             <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z" fill="#E7816B" fillRule="nonzero"/></svg>
              </a>
            </span>
 
            <span>
-          <a href='https://www.youtube.com'>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16">
-  <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/>
-</svg>
+          <a href='https://www.youtube.com' className='mx-2'>
+          <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm4.441 16.892c-2.102.144-6.784.144-8.883 0C5.282 16.736 5.017 15.622 5 12c.017-3.629.285-4.736 2.558-4.892 2.099-.144 6.782-.144 8.883 0C18.718 7.264 18.982 8.378 19 12c-.018 3.629-.285 4.736-2.559 4.892zM10 9.658l4.917 2.338L10 14.342V9.658z" fill="#E7816B" fillRule="nonzero"/></svg>
           </a>
            </span>
 
 
            <span>
-           <a href='https://www.twitter.com'>
-           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
-  <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
-</svg>
+           <a href='https://www.twitter.com' className='mx-2'>
+           <svg width="24" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M24 2.557a9.83 9.83 0 01-2.828.775A4.932 4.932 0 0023.337.608a9.864 9.864 0 01-3.127 1.195A4.916 4.916 0 0016.616.248c-3.179 0-5.515 2.966-4.797 6.045A13.978 13.978 0 011.671 1.149a4.93 4.93 0 001.523 6.574 4.903 4.903 0 01-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.935 4.935 0 01-2.224.084 4.928 4.928 0 004.6 3.419A9.9 9.9 0 010 17.54a13.94 13.94 0 007.548 2.212c9.142 0 14.307-7.721 13.995-14.646A10.025 10.025 0 0024 2.557z" fill="#E7816B" fillRule="nonzero"/></svg>
            </a>
            </span>
 
 
            <span>
-           <a href='https://www.pinterest.com'>
-           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pinterest" viewBox="0 0 16 16">
-  <path d="M8 0a8 8 0 0 0-2.915 15.452c-.07-.633-.134-1.606.027-2.297.146-.625.938-3.977.938-3.977s-.239-.479-.239-1.187c0-1.113.645-1.943 1.448-1.943.682 0 1.012.512 1.012 1.127 0 .686-.437 1.712-.663 2.663-.188.796.4 1.446 1.185 1.446 1.422 0 2.515-1.5 2.515-3.664 0-1.915-1.377-3.254-3.342-3.254-2.276 0-3.612 1.707-3.612 3.471 0 .688.265 1.425.595 1.826a.24.24 0 0 1 .056.23c-.061.252-.196.796-.222.907-.035.146-.116.177-.268.107-1-.465-1.624-1.926-1.624-3.1 0-2.523 1.834-4.84 5.286-4.84 2.775 0 4.932 1.977 4.932 4.62 0 2.757-1.739 4.976-4.151 4.976-.811 0-1.573-.421-1.834-.919l-.498 1.902c-.181.695-.669 1.566-.995 2.097A8 8 0 1 0 8 0z"/>
-</svg>
+           <a href='https://www.pinterest.com' className='mx-3'>
+           <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z" fill="#E7816B" fillRule="nonzero"/></svg>
            </a>
            </span>
 
 
            <span>
            <a href='https://www.instagram.com'>
-           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
-  <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
-</svg>
+           <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" fill="#E7816B" fillRule="nonzero"/></svg>
            </a>
            </span>
             </p>
           </div>
 
         </div>
-      </footer> */}
+      </footer>
       </BrowserRouter>
     </div>
   );

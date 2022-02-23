@@ -1,0 +1,33 @@
+@import '/src/styles.scss';
+
+// active state
+.contact-card{
+    border-radius: 10px;
+    background-image:url('../../assets/contact-card.svg');
+    background-repeat: no-repeat;
+    background-size:70%;
+    background-position: right;
+    // styles for positioning above the footer
+    position: absolute;
+    top:0px;
+    z-index: 100;
+}
+
+button{
+    background-color: white;
+    border-radius: 10px;
+    max-width:fit-content;
+    max-height:4em;
+    text-align: center;
+}
+button:active{
+    color:$lightGrey;
+    background-color:#FFAD9B;
+}
+
+//   small devices
+ @media (max-width: 767.98px) {
+    .contact-card{
+        background-size: cover;
+    }
+ }

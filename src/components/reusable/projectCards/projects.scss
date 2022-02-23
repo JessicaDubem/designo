@@ -1,0 +1,95 @@
+// mixins
+@mixin cardStyle {
+    max-width: 100%;
+    margin: auto;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border:none;
+  }
+@mixin cardBodyBackground{
+    background-color:rgba(255, 173, 155,0.3);
+}
+
+// default styles
+.link-card{
+    display:flex;
+    flex-direction: column;
+
+    .each-card{
+        @include cardStyle();
+        .card-body{
+           @include cardBodyBackground();
+        }
+    }
+}
+
+
+
+
+// media queries
+@media screen and (min-width: 576px) and (max-width: 804.98px) {
+    .link-card{
+        display:flex;
+        justify-content: center;
+        flex-direction: column;
+
+        .each-card{
+            @include cardStyle();
+            // width: 100%;
+            margin: auto;
+
+
+             .card{
+                display:flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                
+                .card-image{
+                    width:50%;
+                }
+                .card-body{
+                    @include cardBodyBackground();
+                   display: flex;
+                   justify-content: center;
+                   align-items:center;
+                   flex-direction:column;
+                   width: 50%;
+                 }
+             }
+        }
+
+    }
+}
+// Large devices (desktops, 805px and up)
+@media (min-width: 805px) {
+    .link-card{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        
+    .each-card{
+        display:flex;
+        flex-direction: row;
+        max-width:31%;
+        margin:0px;
+    }
+        .card{
+            display:flex;
+            flex-direction: row;
+            flex-wrap:wrap;
+            width:100%;
+
+            .card-image{
+                width:100%;
+            }
+            .card-body{
+                @include cardBodyBackground();
+               display: flex;
+               justify-content: center;
+               align-items:center;
+               flex-direction:column;
+               width: 100%;
+             }
+        }
+    }
+}
