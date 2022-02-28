@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import './about.scss'
 
 import mobileHero from '../../assets/about/mobile/image-about-hero.jpg';
 import tabletHero from '../../assets/about/tablet/image-about-hero.jpg';
@@ -11,7 +12,8 @@ import desktopTalent from '../../assets/about/desktop/image-world-class-talent.j
 import mobileDeal from '../../assets/about/mobile/image-real-deal.jpg';
 import tabletDeal from '../../assets/about/tablet/image-real-deal.jpg';
 import desktopDeal from '../../assets/about/desktop/image-real-deal.jpg';
-import Countries from "../../components/reusable/countries/Countries";
+import Countries from "../../components/countries/Countries";
+import Card from "../../components/card/Card";
 
 export default function About() {
   const useMatchMedia = (mediaQuery, initialValue) => {
@@ -56,30 +58,29 @@ export default function About() {
       d-flex
       justify-content-center
       flex-column
-      px-5
+      px-sm-5
       ">
        {/* First Card */}
-       <div className="card mb-5 round-borders" w-100>
-  <div className="row g-0 round-borders">
+       <div className="card mb-5 rounded-border border-0">
+  <div className="row g-0 ">
  {/* card image */}
  <div className="col-lg-4 order-lg-last">
       {
         isMobileResolution && (
-          <img src={mobileHero} className="w-100 h-100 rounded-start" alt="people having a work meeting at a table"/>
+          <img src={mobileHero} className="w-100 h-100" alt="people having a work meeting at a table"/>
         )
       }
       {isTabletResolution && (
-        <img src={tabletHero} className="w-100 h-100 rounded-start" alt="people having a work meeting at a table"/>
+        <img src={tabletHero} className="w-100 h-100 rounded-img-border" alt="people having a work meeting at a table"/>
       )}
       {isDesktopResolution && (
-        <img src={desktopHero} className="w-100 h-100 rounded-start" alt="people having a work meeting at a table"/>
+        <img src={desktopHero} className="w-100 h-100 rounded-img-border" alt="people having a work meeting at a table"/>
       )}
     </div>
 
     {/* card body */}
     <div className="col-lg-8 
     order-lg-first 
-    bg-primary 
     d-flex 
     flex-column 
     justify-content-center 
@@ -90,7 +91,7 @@ export default function About() {
     text-lg-left
     first-about-card
     ">
-      <div className="card-body text-white d-flex flex-column justify-content-center mx-5 ">
+      <div className="card-body text-white d-flex flex-column justify-content-center mx-5">
         <h1 className="card-title mb-4"> About Us</h1>
         <p className="card-text">
         Founded in 2010, we are a creative agency that produces lasting results for our clients.
@@ -105,23 +106,39 @@ export default function About() {
 </div>
 
 {/* Second Card */}
-<div className="card mb-3" w-100>
+<div className="card mb-3 rounded-border border-0 ">
   <div className="row g-0">
     <div className="col-lg-4">
     {
         isMobileResolution && (
-          <img src={mobileTalent} className="w-100 h-100 rounded-start" alt="girl staring at pictures on the wall"/>
+          <img src={mobileTalent} className="w-100 h-100" alt="girl staring at pictures on the wall"/>
         )
       }
       {isTabletResolution && (
-        <img src={tabletTalent} className="w-100 h-100 rounded-start" alt="girl staring at pictures on the wall"/>
+        <img src={tabletTalent} className="w-100 h-100 rounded-img-border" alt="girl staring at pictures on the wall"/>
       )}
       {isDesktopResolution && (
-        <img src={desktopTalent} className="w-100 h-100 rounded-start" alt="girl staring at pictures on the wall"/>
+        <img src={desktopTalent} className="w-100 h-100 rounded-img-border-2" alt="girl staring at pictures on the wall"/>
       )}
     </div>
-    <div className="col-lg-8 bg-secondary d-flex flex-column justify-content-center align-items-center">
-      <div className="card-body d-flex flex-column justify-content-center align-items-center mx-5 py-5 py-lg-0 text-center text-lg-left">
+    <div className="col-lg-8 
+    d-flex 
+    flex-column 
+    justify-content-center 
+    align-items-center
+    second-about-card">
+      <div className="
+      card-body 
+      d-flex 
+      flex-column 
+      justify-content-center
+      align-items-center 
+      mx-5 
+      py-5 
+      py-lg-0 
+      text-center 
+      text-lg-left
+      ">
         <h1 className="card-title text-primary mb-4 w-100">World-class talent</h1>
         <p className="card-text">
         We are a crew of strategists, problem-solvers, and technologists.
@@ -144,24 +161,40 @@ export default function About() {
 <Countries/>
 
 {/* Third Card */}
-  <div className="card mb-3" w-100>
+  <div className="card mb-3 mb-5 rounded-border border-0">
 <div className="row g-0">
     {/* card image */}
-  <div className="col-lg-4 order-lg-last">
+  <div className="col-lg-4 order-lg-last rounded-border">
   {
         isMobileResolution && (
-          <img src={mobileDeal} className="w-100 h-100 rounded-start" alt="girl hanging pictures on the wall"/>
+          <img src={mobileDeal} className="w-100 h-100 " alt="girl hanging pictures on the wall"/>
         )
       }
       {isTabletResolution && (
-        <img src={tabletDeal} className="w-100 h-100 rounded-start" alt="girl hanging pictures on the wall"/>
+        <img src={tabletDeal} className="w-100 h-100 rounded-img-border" alt="girl hanging pictures on the wall"/>
       )}
       {isDesktopResolution && (
-        <img src={desktopDeal} className="w-100 h-100 rounded-start" alt="girl hanging pictures on the wall"/>
+        <img src={desktopDeal} className="w-100 h-100 rounded-img-border" alt="girl hanging pictures on the wall"/>
       )}  </div>
     {/* card body */}
-    <div className="col-lg-8 order-lg-first bg-secondary d-flex flex-column justify-content-center align-items-center">
-      <div className="card-body d-flex flex-column justify-content-center align-items-center mx-5 py-5 py-lg-0 text-center text-lg-left">
+    <div className="col-lg-8 
+    third-about-card
+    order-lg-first 
+    d-flex flex-column 
+    justify-content-center 
+    align-items-center
+    ">
+      <div className="card-body 
+      d-flex 
+      flex-column 
+      justify-content-center 
+      align-items-center 
+      mx-5 
+      py-5 
+      py-lg-0 
+      text-center 
+      text-lg-left
+      ">
         <h1 className="card-title text-primary mb-4 w-100">The real deal</h1>
         <p className="card-text">
         As strategic partners in our clients’ businesses, 
@@ -179,6 +212,7 @@ export default function About() {
     </div>
   </div>
 </div>
-      </div>
+<Card/>
+</div>
   );
 }

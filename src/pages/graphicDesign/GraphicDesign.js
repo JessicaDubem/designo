@@ -6,6 +6,7 @@ import Image1 from '../../assets/designs/graphic/image-boxed-water.jpg';
 import Image2 from '../../assets/designs/graphic/image-change.jpg';
 import Image3 from '../../assets/designs/graphic/image-science.jpg';
 import './graphicDesign.scss';
+import Card from "../../components/card/Card";
 
 export default function GraphicDesign() {
   const graphicCards = [
@@ -90,6 +91,7 @@ export default function GraphicDesign() {
           </Link>
           </div>
       </div>
+      <Card/>
       </div>
   );
 }

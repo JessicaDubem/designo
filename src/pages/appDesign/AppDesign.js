@@ -7,6 +7,7 @@ import Image2 from '../../assets/designs/app/image-eyecam.jpg';
 import Image3 from '../../assets/designs/app/image-faceit.jpg';
 import Image4 from '../../assets/designs/app/image-loopstudios.jpg';
 import Image5 from '../../assets/designs/app/image-todo.jpg';
+import Card from "../../components/card/Card";
 
 export default function AppDesign() {
   const appCards = [
@@ -93,6 +94,7 @@ export default function AppDesign() {
           </Link>
           </div>
       </div>
+      <Card/>
       </div>
   );
 }

@@ -1,0 +1,26 @@
+@import '../../styles.scss';
+@import '../../index.scss';
+
+.countries{
+        a{
+            align-self: center;
+        }
+        #canada-button, #uk-button, #australia-button{
+            background-color:$primary;
+            color:white;
+        }
+        #canada-button:hover, #uk-button:hover, #australia-button:hover{
+            background-color:$lightPrimary;
+        }
+        #canada-button:active, #uk-button-active, #australia-button:active{
+            background-color:$lightPrimary;
+        }
+    
+    img{
+        background-image: url('../../assets/homepage/thirdSection/small-circle.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+       
+    }
+}

@@ -1,3 +1,39 @@
+@import '../../styles.scss';
+$primaryColor:#E7816B;
+$secondaryColor:#FFAD9B;
+
+
+@mixin card-background {
+    background-repeat:  no-repeat;
+    background-size:100% 100%;
+    background-position: 100% 100%;
+  }
+
+.page-cards{
+
+    display: grid; 
+    a:focus, a:hover, a:visited, a:link, a:active {
+        text-decoration: none;
+        color:white;
+    }
+    .web-card{
+        background-image: url('../../assets/homepage/mobile/image-web-design.jpg');
+        @include card-background;
+        border-radius: 10px;
+    }
+    .app-card{
+        background-image: url('../../assets/homepage/mobile/image-app-design.jpg');
+        @include card-background;
+        border-radius: 10px;
+    }
+    .graphic-card{
+        background-image: url('../../assets/homepage/mobile/image-graphic-design.jpg');
+        @include card-background;
+        border-radius: 10px;
+    }
+
+}
+// MEDIA QUERIES
 @media (min-width: 805px) {
     .web-design{
         .link-card{
@@ -5,3 +41,46 @@
         }
     }
 }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px){ 
+    .page-cards{
+        .web-card{
+            background-image: url('../../assets/homepage/tablet/image-web-design.jpg');
+            @include card-background;
+            
+        }
+        .app-card{
+            background-image: url('../../assets/homepage/tablet/image-app-design.jpg');
+            @include card-background;
+    
+        }
+        .graphic-card{
+            background-image: url('../../assets/homepage/tablet/image-graphic-design.jpg');
+            @include card-background;
+    
+        }
+    }
+ }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { 
+    header{
+        height:80vh;
+    }
+    .page-cards{
+
+        .web-card{
+            background-image: url('../../assets/homepage//desktop/web-design-lg.jpg');
+            @include card-background;
+        }
+        .app-card{
+            background-image: url('../../assets/homepage/desktop/app-design.jpg');
+            @include card-background;
+        }
+        .graphic-card{
+            background-image: url('../../assets/homepage/desktop/graphic-design.jpg');
+            @include card-background;
+        }
+    }
+ }

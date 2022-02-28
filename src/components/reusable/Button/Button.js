@@ -1,4 +1,6 @@
-export default function Button() {
+import './button.scss';
+
+export default function Button(props) {
   return (
      <button className='
       btn
@@ -9,9 +11,9 @@ export default function Button() {
       fs-6
       align-self-md-center
       py-md-3
-      bg-white
-      '>
-        LEARN MORE
+      '
+      id={props.styles}>
+       {props.text}
       </button>
   )
 }

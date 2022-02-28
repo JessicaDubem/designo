@@ -1,3 +1,4 @@
+@import '../../styles.scss';
 $primaryColor:#E7816B;
 $secondaryColor:#FFAD9B;
 
@@ -5,17 +6,39 @@ $secondaryColor:#FFAD9B;
 @mixin card-background {
     background-repeat:  no-repeat;
     background-size:100% 100%;
-    background-position: 50% 50%;
+    background-position: 100% 100%;
   }
 
 
 ////////////////////////////STYLES///////////////////////////////////////////////////////////
+.home{
 header{
     border-radius: 5px;
     background-image:url('../../assets/homepage/header/header-background.svg');
     background-repeat: no-repeat;
     background-size:contain;
     background-position: right;
+    // overflow-y:hidden;
+.header-text{
+    height:50%;
+}
+.header-image-cover{
+    object-fit: cover;
+    height: 50%;
+}
+
+
+    #home-button{
+        background-color: white;
+    }
+    #home-button:hover{
+        background-color:$lightPrimary;
+        color:white
+    }
+    #home-button:active{
+        background-color:$lightPrimary;
+        color:white
+    }
 }
 .third-section{
     img{
@@ -51,8 +74,24 @@ header{
 }
 
 
-
 //////////////////////////////////////////// ///MEDIA QUERIES/////////////////////////////////////////////////////////
+
+@media (min-width:425px)and(max-width: 557.98px){ 
+   header{
+       height:100vh;
+   }
+ }
+
+
+ @media (min-width:558px)and(max-width: 767.98px){ 
+    header{
+        .header-image-cover{
+            margin:auto;
+            width:80%;
+        }
+    }
+  }
+ 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px){ 
     .page-cards{
@@ -76,6 +115,9 @@ header{
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) { 
+    header{
+        height:80vh;
+    }
     .page-cards{
 
         .web-card{
@@ -91,17 +133,5 @@ header{
             @include card-background;
         }
     }
-
-    .home-grid{
-        .web-grid-card{
-             // height:500px;
-             grid-area: 1 / 1 / 2 / 2;
-        }
-        .app-grid-card{
-            grid-area: 1 / 2 / 2 / 3;
-        }
-        .graphic-grid-card{
-            grid-area: 2 / 2 / 3 / 3;
-        }
-    }
  }
+}

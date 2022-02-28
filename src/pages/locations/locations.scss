@@ -1,0 +1,43 @@
+@import '../../index.scss';
+.location{
+    .first-location-card, .second-location-card, .third-location-card{
+        background-color: $secondary;
+        background-image: url('../../assets/global/bg-pattern-two-circles.svg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    // MEDIA QUERIES
+
+    @media(min-width:768px)and(max-width:991.98px){
+        .first-location-card, .second-location-card, .third-location-card{
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .rounded-border{
+            border-radius: 10px;
+            .rounded-img-border{
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+            }
+        }
+    }
+
+    @media(min-width:992px){
+        .first-location-card, .third-location-card{
+            border-radius: 10px;
+            border-radius: 10px;
+        }
+
+        .second-location-card{
+            border-radius: 10px;
+            border-radius: 10px;
+        }
+        .rounded-border{
+            .rounded-img-border{
+                border-radius: 10px;
+                border-radius: 10px;
+            }
+        }
+    }
+}

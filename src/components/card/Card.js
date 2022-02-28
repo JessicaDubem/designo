@@ -1,4 +1,6 @@
 import './card.scss';
+import Button from '../reusable/Button/Button';
+import { Link } from 'react-router-dom';
 export default function Card() {
   return (
   <div className='
@@ -33,18 +35,9 @@ export default function Card() {
             grow
           </p>
       </div>
-      <button className='
-      btn
-      btn-lg 
-      text-nowrap
-      w-md-25
-      mx-auto
-      fs-6
-      align-self-md-center
-      py-md-3
-      '>
-          GET IN TOUCH
-      </button>
+     <Link to ="/contact">
+     <Button text="GET IN TOUCH" styles ="card-button"/>
+     </Link>
   </div>
     );
 }

@@ -1,0 +1,29 @@
+@import '../../styles.scss';
+.contact{
+    input{
+        outline:none;
+        color:white;
+    }
+
+    ::placeholder{
+        color:white;
+    }
+        .contact-div{
+            border-radius: 10px; 
+
+            #contact-button{
+                margin-right: 0px;
+            }
+            #contact-button{
+                background-color:white;
+                color:black;
+            }
+            #contact-button:hover{
+                background-color:$lightPrimary;
+            }
+            #contact-button:active{
+                background-color:$lightPrimary;
+            }
+        
+        }
+    }

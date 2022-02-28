@@ -9,6 +9,7 @@ import Image3 from '../../assets/designs/web/image-camp.jpg';
 import Image4 from '../../assets/designs/web/image-express.jpg';
 import Image5 from '../../assets/designs/web/image-photon.jpg';
 import Image6 from '../../assets/designs/web/image-transfer.jpg';
+import Card from "../../components/card/Card";
 
 export default function WebDesign() {
   const webCards = [
@@ -92,6 +93,7 @@ export default function WebDesign() {
           </Link>
           </div>
       </div>
+      <Card/>
       </div>
   );
 }

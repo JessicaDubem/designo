@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom";
+import './locations.scss';
 // import images
 import australiaDesktop from '../../assets/locations/desktop/image-map-australia.png';
 import canadaDesktop from '../../assets/locations/desktop/image-map-canada.png';
@@ -7,6 +9,7 @@ import ukDesktop from '../../assets/locations/desktop/image-map-united-kingdom.p
 import australiaTablet from '../../assets/locations/tablet/image-map-australia.png';
 import canadaTablet from '../../assets/locations/tablet/image-map-canada.png';
 import ukTablet from '../../assets/locations/tablet/image-map-uk.png';
+import Card from "../../components/card/Card";
 
 
 export default function Locations() {
@@ -39,15 +42,10 @@ export default function Locations() {
   const isTabletResolution = useMatchMedia('(min-width:768px) and (max-width:991.98px)', true);
   const isDesktopResolution = useMatchMedia('(min-width:992px)', true);
 
-//   let map = L.map('map').setView([0, 0], 1);
-
   return (
     <div className="
     location
-    d-flex
-    justify-content-center
-    flex-column
-    px-5
+    mx-sm-5
     ">
      {/* First Card */}
      <div className="
@@ -55,20 +53,27 @@ export default function Locations() {
     mb-5
     border-0
     bg-light
+    rounded-border
     ">
-<div className="row g-0 gx-lg-4 border-0">
+<div className="row g-0 gx-lg-4 border-0 ">
 {/* card image */}
 <div className="col-lg-4 order-lg-last">
     
      {isMobileResolution && (
-      <img src={canadaDesktop} className="w-100 h-100 rounded-start" id='map' alt="our office location in canada."/>
+      <a href='https://goo.gl/maps/EkAZfnMsHDwUtjer6'>
+<img src={canadaDesktop} className="w-100 h-100 " id='map' alt="our office location in canada."/>
+</a>
     )}
     {isTabletResolution && (
-      <img src={canadaTablet} className="w-100 h-100 rounded-start" alt="our office location in canada."/>
-    )}
+      <a href='https://goo.gl/maps/EkAZfnMsHDwUtjer6'>
+              <img src={canadaTablet} className="w-100 h-100 rounded-img-border" alt="our office location in canada."/>
+      </a>
+      )}
     {isDesktopResolution && (
-      <img src={canadaDesktop} className="w-100 h-100 rounded-start" alt="our office location in canada."/>
-    )}
+      <a href = 'https://goo.gl/maps/EkAZfnMsHDwUtjer6'>
+              <img src={canadaDesktop} className="w-100 h-100 rounded-img-border" alt="our office location in canada."/>
+      </a>
+      )}
   </div>
 
   {/* card body */}
@@ -83,11 +88,11 @@ export default function Locations() {
   py-lg-0 
   text-center 
   text-md-left
-  first-about-card
+  first-location-card
   ">
     <div className="card-body  d-flex flex-column justify-content-center mx-5 w-100">
       <h1 className="card-title mb-4 text-primary">Canada</h1>
-      <div className="d-flex flex-column flex-md-row justify-content-md-between">
+      <div className="d-flex flex-column flex-md-row justify-content-md-between w-75 m-auto m-md-0">
       <p>
           <strong>
               Designo Central Office
@@ -113,23 +118,41 @@ export default function Locations() {
 </div>
 
 {/* Second Card */}
-<div className="card mb-3 w-100 border-0 bg-light">
+<div className="card mb-3 border-0 bg-light rounded-border">
 <div className="row g-0 gx-lg-4">
   <div className="col-lg-4">
   {isMobileResolution && (
-      <img src={australiaDesktop} className="w-100 h-100 rounded-start" alt="our office location in australia"/>
+    <a href="https://goo.gl/maps/QNw79AcT4iCn4oSC8">
+      <img src={australiaDesktop} className="w-100 h-100 " alt="our office location in australia"/>
+    </a>
     )}
     {isTabletResolution && (
-      <img src={australiaTablet} className="w-100 h-100 rounded-start" alt="our office location in australia"/>
+       <a href="https://goo.gl/maps/QNw79AcT4iCn4oSC8">
+      <img src={australiaTablet} className="w-100 h-100 rounded-img-border" alt="our office location in australia"/>
+      </a>
     )}
     {isDesktopResolution && (
-      <img src={australiaDesktop} className="w-100 h-100 rounded-start" alt="our office location in australia"/>
+       <a href="https://goo.gl/maps/QNw79AcT4iCn4oSC8">
+      <img src={australiaDesktop} className="w-100 h-100 rounded-img-border" alt="our office location in australia"/>
+      </a>
     )}
   </div>
-  <div className="col-lg-8 bg-secondary d-flex flex-column justify-content-center align-items-center">
-    <div className="card-body d-flex flex-column justify-content-center align-items-center mx-5 py-5 py-lg-0 text-center text-lg-left">
+  <div className="
+  col-lg-8 
+  order-lg-last 
+  bg-secondary 
+  d-flex 
+  flex-column 
+  justify-content-left
+  align-items-center 
+  p-5
+  py-lg-0 
+  text-center 
+  text-md-left
+  second-location-card">
+    <div className="card-body  d-flex flex-column justify-content-center mx-5 w-100">
     <h1 className="card-title mb-4 text-primary">Australia</h1>
-    
+    <div className="d-flex flex-column flex-md-row justify-content-md-between w-75 m-auto m-md-0">
       <p>
           <strong>
               Designo AU Office
@@ -149,13 +172,14 @@ export default function Locations() {
           M : contact@designo.au
       </p>
     </div>
+    </div>
   </div>
 </div>
 </div>
 
 
 {/* Third Card */}
-<div className="card mb-3 w-100 border-0 bg-light">
+<div className="card mb-3 border-0 bg-light rounded-border">
 <div className="row g-0 gx-lg-4">
   {/* card image */}
 <div className="
@@ -164,18 +188,37 @@ order-lg-last
  ">
     
      {isMobileResolution && (
-      <img src={ukDesktop} className="w-100 h-100 rounded-start" alt="our office in the United Kingdom."/>
+      <a href='https://goo.gl/maps/9iG186WkUpZW5pbq5'>
+      <img src={ukDesktop} className="w-100 h-100 " alt="our office in the United Kingdom."/>
+      </a>
     )} 
     {isTabletResolution && (
-      <img src={ukTablet} className="w-100 h-100 rounded-start" alt="our office in the United Kingdom."/>
+      <a href='https://goo.gl/maps/9iG186WkUpZW5pbq5'>
+      <img src={ukTablet} className="w-100 h-100 rounded-img-border" alt="our office in the United Kingdom."/>
+      </a>
     )}
     {isDesktopResolution && (
-      <img src={ukDesktop} className="w-100 h-100 rounded-start" alt="our office in the United Kingdom."/>
+      <a href='https://goo.gl/maps/9iG186WkUpZW5pbq5'>
+      <img src={ukDesktop} className="w-100 h-100 rounded-img-border" alt="our office in the United Kingdom."/>
+      </a>
     )}  </div>
   {/* card body */}
-  <div className="col-lg-8 order-lg-first bg-secondary d-flex flex-column justify-content-center align-items-center">
-    <div className="card-body d-flex flex-column justify-content-center align-items-center mx-5 py-5 py-lg-0 text-center text-lg-left">
+  <div className="
+  col-lg-8 
+  order-lg-first
+  bg-secondary 
+  d-flex flex-column 
+  justify-content-left 
+  align-items-center 
+  p-5
+  py-lg-0
+  text-center
+  text-md-left
+  third-location-card
+  ">
+<div className="card-body  d-flex flex-column justify-content-center mx-5 w-100">
     <h1 className="card-title mb-4 text-primary">United Kingdom</h1>
+    <div className="d-flex flex-column flex-md-row justify-content-md-between w-75 m-auto m-md-0">
       <p>
           <strong>
               Designo UK Office
@@ -194,10 +237,12 @@ order-lg-last
           <br></br>
           M : contact@designo.uk
       </p>
+      </div>
     </div>
   </div>
 </div>
 </div>
-    </div>
+<Card/>
+</div>
 );
 }

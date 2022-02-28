@@ -1,13 +1,14 @@
 // import hooks
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 // import files
-import  headerImage from '../../assets/homepage/header/header.png'
-import friendly from '../../assets/homepage/thirdSection/friendly.svg'
-import passionate from '../../assets/homepage/thirdSection/passionate.svg'
-import resourceful from '../../assets/homepage/thirdSection/resourceful.svg'
-import Button from '../../components/reusable/Button'
-import './home.scss'
+import  headerImage from '../../assets/homepage/header/header.png';
+import friendly from '../../assets/homepage/thirdSection/friendly.svg';
+import passionate from '../../assets/homepage/thirdSection/passionate.svg';
+import resourceful from '../../assets/homepage/thirdSection/resourceful.svg';
+import Card from '../../components/card/Card';
+import Button from '../../components/reusable/Button/Button';
+import './home.scss';
 
 
 
@@ -18,15 +19,15 @@ export default function Home() {
         px-5
         pt-5 
         pt-md-0
-        d-flex 
+        d-flex
         justify-content-center
         justify-content-md-between
          flex-column 
         flex-md-row 
         bg-primary
-        
+        overflow-hidden
         ">
-          <div className='text-center text-md-left px-4 align-self-center'>
+          <div className='text-center text-md-left header-text col-md-6 align-self-center'>
             <h1 className='text-white'>
               Award-winning custom
               <br/> designs and digital<br/>
@@ -39,11 +40,11 @@ export default function Home() {
               Find out more about our services.
             </p>
     <Link to = '/contact'>
-      <Button/>
+      <Button text="LEARN MORE" styles="home-button"/>
     </Link>
           </div>
-          <div className='mb-sm-5 align-self-end w-md-50 row-md-4'>
-          <img src={headerImage} alt='Header' className='img-fluid mb-sm-5'></img>
+          <div className=' col-md-6 header-image-cover align-self-center h-100'>
+          <img src={headerImage} alt='Header' className='header-image w-100 '></img>
           </div>
         </header>
 
@@ -56,23 +57,46 @@ export default function Home() {
         text-center 
         gap-3
         my-5
+        d-flex
+        flex-column
+        flex-lg-row
+        justify-content-between
+        
         '>
-          
-          
-          <Link to='/web-design'>
-          <div className='
+          <Link to='/web-design' className='col-lg-6
           mt-4
           web-card 
-          web-grid-card
           d-flex 
           align-items-center 
           flex-column 
           justify-content-center 
           px-4
           py-5
+          h-lg-100
+          '>
+            <h3>
+              WEB DESIGN
+            </h3>
+            <p className=''>
+              VIEW PROJECTS
+              <span className="mx-3">
+              <svg width="7" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l4 4-4 4" stroke="#E7816B" strokeWidth="2" fill="none" fillRule="evenodd"/></svg>
+              </span>
+            </p>
+          {/* <div className='h-100'>
+          <div className='
+          mt-4
+          web-card 
+          d-flex 
+          align-items-center 
+          flex-column 
+          justify-content-center 
+          px-4
+          py-5
+          h-lg-100
           
           '>
-            <div className='wrapper'>
+            <div className='wrapper h-lg-100'>
             <h3 className=' mt-md-3'>
               WEB DESIGN
             </h3>
@@ -84,8 +108,9 @@ export default function Home() {
             </p>
           </div>
           </div>
+          </div> */}
           </Link>
-
+          <div className='d-flex flex-column col-lg-6'>
           <Link to='/app-design'>
           <div className='
           app-card 
@@ -96,6 +121,7 @@ export default function Home() {
           flex-column 
           justify-content-center 
           p-5
+          mb-3
           '>
             <h3 className='mt-md-3'>
              APP DESIGN
@@ -130,6 +156,7 @@ export default function Home() {
             </p>
           </div>
           </Link>
+          </div>
         </div>
 
 
@@ -150,7 +177,7 @@ export default function Home() {
         my-5'>
           
           <div className='d-sm-flex flex-sm-row d-xl-inline mb-5 mb-xl-0 mt-4 mt-xl-0'>
-            <img src={passionate} alt='showing how passionate we are' className='passionate me-sm-4 me-xl-0'/>
+            <img src={passionate} alt='showing how passionate we are' className=' me-sm-4 me-xl-0'/>
             <div className='align-self-center mt-5  mx-4'>
             <h5 className='mb-4 fw-normal'>
               PASSIONATE
@@ -169,7 +196,7 @@ export default function Home() {
 
 
           <div className='d-sm-flex flex-sm-inline-block d-xl-inline mb-5 mb-xl-0'>
-            <img src={resourceful} alt='showing how resourceful we are' className='resourceful  me-sm-4 me-xl-0'/>
+            <img src={resourceful} alt='showing how resourceful we are' className='me-sm-4 me-xl-0'/>
             <div className='align-self-center mt-5 mx-4'>
             <h5 className='mb-4 fw-normal'>
               RESOURCEFUL
@@ -186,7 +213,7 @@ export default function Home() {
 
 
           <div className='d-sm-flex flex-sm-inline-block d-xl-inline mb-5 mb-xl-0'>
-            <img src={friendly} alt=' showing how friendly we are' className='friendly'/>
+            <img src={friendly} alt=' showing how friendly we are' className=''/>
             <div className='align-self-center mt-5 mx-4'>
             <h5 className='mb-4 fw-normal'>
               FRIENDLY
@@ -201,7 +228,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-
+        <Card/>
       </div>
   );
 }

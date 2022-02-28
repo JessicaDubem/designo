@@ -1,33 +1,36 @@
 @import '/src/styles.scss';
 
-// active state
 .contact-card{
     border-radius: 10px;
     background-image:url('../../assets/contact-card.svg');
     background-repeat: no-repeat;
-    background-size:70%;
+    background-size:cover;
     background-position: right;
-    // styles for positioning above the footer
-    position: absolute;
-    top:0px;
-    z-index: 100;
-}
+    margin-bottom: -120px;
+    z-index: 10;
+    position: relative;
 
-button{
-    background-color: white;
-    border-radius: 10px;
-    max-width:fit-content;
-    max-height:4em;
-    text-align: center;
-}
-button:active{
-    color:$lightGrey;
-    background-color:#FFAD9B;
-}
+    a{
+        align-self: center;
+    }
+    #card-button{
+        background-color: white;
+    }
+    #card-button:hover{
+        background-color:$lightPrimary;
+        color:white
+    }
+    #card-button:active{
+        background-color:$lightPrimary;
+        color:white
+    }
 
+
+// MEDIA QUERIES
 //   small devices
- @media (max-width: 767.98px) {
+@media (max-width: 767.98px) {
     .contact-card{
         background-size: cover;
     }
  }
+}

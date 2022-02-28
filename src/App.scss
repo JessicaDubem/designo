@@ -6,13 +6,9 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 26px;
-    // overflow-x: hidden;
 }
-body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    
+html, body{
+    height:100%;
 }
 h1{
     font-weight: 500;
@@ -50,10 +46,11 @@ footer{
         flex-direction: column;
         text-align: center;
 
-        .footer-block-one, 
-        .footer-block-two, 
-        .footer-block-three{
-        margin-bottom: 20px;
+        .footer-icons-hide{
+            display:none;
+        }
+        .footer-icons-hide{
+            display:block;
         }
     }
 }
