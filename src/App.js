@@ -46,9 +46,7 @@ function App() {
   
     return isMatching
   }
-  
   const isDesktopResolution = useMatchMedia('(min-width:805px)', true)
-  
   
 // /////////////////////////////states/////////////////////////////////////////
 const [menu, setMenu] = useState(true);
@@ -70,7 +68,7 @@ const [menu, setMenu] = useState(true);
    '>
     <NavLink to = '/'>
    <div className='w-50'>
-   <img src={designo} alt='go to home page' className='w-100'/>
+   <img src={designo} alt='go to home page' className='w-100 home-link'/>
    </div>
     </NavLink>
        <ul className='list-unstyled 
@@ -182,7 +180,7 @@ const [menu, setMenu] = useState(true);
    footer-header'>
     <NavLink to = '/'>
    <div className='w-50'>
-   <img src={designoLight} alt='go to home page' className='w-100 '/>
+   <img src={designoLight} alt='go to home page' className='w-100 home-link'/>
    </div>
     </NavLink>
        <ul className='list-unstyled 

@@ -83,32 +83,7 @@ export default function Home() {
               <svg width="7" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l4 4-4 4" stroke="#E7816B" strokeWidth="2" fill="none" fillRule="evenodd"/></svg>
               </span>
             </p>
-          {/* <div className='h-100'>
-          <div className='
-          mt-4
-          web-card 
-          d-flex 
-          align-items-center 
-          flex-column 
-          justify-content-center 
-          px-4
-          py-5
-          h-lg-100
-          
-          '>
-            <div className='wrapper h-lg-100'>
-            <h3 className=' mt-md-3'>
-              WEB DESIGN
-            </h3>
-            <p className=''>
-              VIEW PROJECTS
-              <span className="mx-3">
-              <svg width="7" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l4 4-4 4" stroke="#E7816B" strokeWidth="2" fill="none" fillRule="evenodd"/></svg>
-              </span>
-            </p>
-          </div>
-          </div>
-          </div> */}
+   
           </Link>
           <div className='d-flex flex-column col-lg-6'>
           <Link to='/app-design'>

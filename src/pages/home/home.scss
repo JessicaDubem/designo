@@ -59,16 +59,25 @@ header{
         @include card-background;
         border-radius: 10px;
     }
+    .web-card:hover{
+        box-shadow: inset 0 0 0 1000px rgba(231, 129, 107,0.8);
+    }
     
     .app-card{
         background-image: url('../../assets/homepage/mobile/image-app-design.jpg');
         @include card-background;
         border-radius: 10px;
     }
+    .app-card:hover{
+        box-shadow: inset 0 0 0 1000px rgba(231, 129, 107,0.8);
+    }
     .graphic-card{
         background-image: url('../../assets/homepage/mobile/image-graphic-design.jpg');
         @include card-background;
         border-radius: 10px;
+    }
+    .graphic-card:hover{
+        box-shadow: inset 0 0 0 1000px rgba(231, 129, 107,0.8);
     }
 
 }

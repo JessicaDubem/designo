@@ -28,6 +28,10 @@ h3{
     line-height: 26px;
     word-spacing: 5;
 }
+.home-link:hover{
+    transform: scale(1.1);
+    transition-duration: 0.3s;
+}
 
 footer{
     background-color:$darkGrey;
@@ -35,7 +39,7 @@ footer{
     img{
         width:50%;
     }
-
+  
     .footer-info{
         color:rgb(163, 162, 162);
         

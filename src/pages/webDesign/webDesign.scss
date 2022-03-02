@@ -74,13 +74,22 @@ $secondaryColor:#FFAD9B;
             background-image: url('../../assets/homepage//desktop/web-design-lg.jpg');
             @include card-background;
         }
+         .web-card:hover{
+            box-shadow: inset 0 0 0 1000px rgba(231, 129, 107,0.8);
+         }
         .app-card{
             background-image: url('../../assets/homepage/desktop/app-design.jpg');
             @include card-background;
         }
+        .app-card:hover{
+            box-shadow: inset 0 0 0 1000px rgba(231, 129, 107,0.8);
+        }
         .graphic-card{
             background-image: url('../../assets/homepage/desktop/graphic-design.jpg');
             @include card-background;
+        }
+        .graphic-card:hover{
+            box-shadow: inset 0 0 0 1000px rgba(231, 129, 107,0.8);
         }
     }
  }
